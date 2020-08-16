@@ -1,0 +1,50 @@
+<h1 mat-dialog-title>Add new Field</h1>
+<form #form='ngForm'>
+  <div mat-dialog-content class="fields-wrapper">
+    <mat-form-field>
+      <mat-label>Field label</mat-label>
+      <input matInput
+             required
+             name="label"
+             [(ngModel)]="addFieldData.label">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Field name</mat-label>
+      <input matInput
+             [formControl]="nameControl"
+             required
+             name="name"
+             [(ngModel)]="addFieldData.name">
+    </mat-form-field>
+    <span *ngIf="nameControl.errors?.nameUsed"
+          class="error-message"
+    >
+      'Field name is already used . Pick another one .'
+    </span>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Field type</mat-label>
+      <mat-select required
+                  name="type"
+                  [(ngModel)]="addFieldData.type">
+        <mat-option *ngFor="let field of fieldTypes"
+                    [value]="field.value">{{field.label}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-checkbox
+      [(ngModel)]="addFieldData.required"
+      name="required"
+      class="example-margin">Required</mat-checkbox>
+
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="cancel()">Cancel</button>
+    <button mat-raised-button
+            color="primary"
+            [disabled]="!form.valid"
+            [mat-dialog-close]="addFieldData"
+            cdkFocusInitial>Add</button>
+  </div>
+</form>

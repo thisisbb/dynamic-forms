@@ -1,0 +1,12 @@
+$container-border: 1px solid rgba(0,0,0,.2);
+$container-border-radius: 4px;
+$container-width: 50%;
+
+:host{
+  display: flex;
+  app-form, app-form-result {
+    width: $container-width;
+    border: $container-border;
+    border-radius: $container-border-radius;
+  }
+}

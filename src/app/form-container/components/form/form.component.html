@@ -1,0 +1,15 @@
+<h2>Dynamic form</h2>
+<form #form="ngForm" (submit)="submitForm()">
+  <div class="buttons-container">
+    <button mat-stroked-button
+            color="primary"
+            (click)="openDialog()"
+    >Add a field</button>
+    <button type="submit"
+            mat-raised-button color="primary"
+            [disabled]="submitDisabled()"
+    >Submit</button>
+  </div>
+
+  <div #fieldContainer></div>
+</form>
